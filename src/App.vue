@@ -12,13 +12,17 @@ export default {
   components:{
     HeaderArea,FooterArea
   },
+  computed:{
+    user(){
+      return this.$store.state.user;
+    }
+  },
   setup() {
     
   },
 }
 </script>
 
-import
 
 
 <style>
