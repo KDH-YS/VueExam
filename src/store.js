@@ -42,10 +42,17 @@ const store = createStore({
         state.user = null;
         console.error('아이디혹은 비밀번호가 올바르지 않습니다')
       }
+    },
+    deleteProduct(state,productId){
+      state.productList = state.productList.filter(product =>productId !==product.id)
+    },
+    addProduct(state,product){
+      const newId = state.productList.length? Math.max(...state.productList.map(p=>p.id))+1: 1;
+      state.productList.push({...product,id: newId})
     }
   },
   getters:{
-    filteredProductList:(state)=>(selectedCategory)=>{
+    ProductList:(state)=>(selectedCategory)=>{
       if(!selectedCategory){
         return state.productList;}
         return state.productList.filter(product =>product.category2 ===selectedCategory);

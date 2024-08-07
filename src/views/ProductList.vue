@@ -13,13 +13,13 @@
     </div>
     </div>
     <div class="row">
-      <div class="col-xl-3 col-lg-4 col-md-6" v-for="(product, idx) in filteredProductList" :key="idx">
+      <div class="col-xl-3 col-lg-4 col-md-6" v-for="(product, idx) in ProductList" :key="idx">
         <div class="card" style="width:18rem;">
           <a @click="gotoDetail(product.id)" style="cursor: pointer;">
             <img v-bind:src="`/download/${product.path}`" class="card-img-top" alt="">
           </a>
           <div class="card-body">
-            <h5 class="card-title">{{product.title}}</h5>
+            <h5 class="card-title">{{product.product_name}}</h5>
             <p class="card-text">
               <span class="badge bg-dark text-white me-1">{{product.category1}}</span>
               <span class="badge bg-dark text-white me-1">{{product.category2}}</span>
@@ -51,10 +51,10 @@ export default {
   },
   computed:{
     ...mapGetters({
-      filteredProductList: 'filteredProductList',
+      ProductList: 'ProductList',
     }),
-    filteredProductList() {
-      return this.$store.getters.filteredProductList(this.selectedCategory);
+    ProductList() {
+      return this.$store.getters.ProductList(this.selectedCategory);
     },
   },
   methods:{
